@@ -1,0 +1,10 @@
+{
+  "name": "LOW WATER — salvage together",
+  "short_name": "LOW WATER",
+  "description": "A grounded co-op salvage run through a damp canal yard.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1e2224",
+  "theme_color": "#1e2224",
+  "orientation": "landscape"
+}
