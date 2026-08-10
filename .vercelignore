@@ -1,0 +1,14 @@
+# Keep local build output and developer-only material out of Vercel uploads.
+node_modules/
+dist/
+generated_images/
+low-water-source.zip
+.codex/
+.agents/
+.vercel/
+*.log
+
+# Never ship local environment files. The example is documentation only.
+.env
+.env.*
+!.env.example
