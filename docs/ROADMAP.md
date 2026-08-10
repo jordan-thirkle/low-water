@@ -29,7 +29,9 @@
 - [ ] Add moderation, retention rules, privacy copy, account deletion, and a child-safety review before public chat.
 - [ ] Add error reporting, performance budget, reconnect telemetry, and a safe migration plan for Supabase limits.
 - [ ] Audit the full npm dependency tree and all future music, sound, font, and art inputs.
-- [ ] Add preview deployment and CI only after the repository is connected to its intended GitHub/Vercel project.
+- [x] Add repository CI for tests and production builds.
+- [ ] Add a verified Vercel preview deployment using the checked-in Vite configuration.
+- [ ] Confirm the Vercel project is Git-connected and protected branch deployment is enabled.
 
 ## Deliberately deferred
 

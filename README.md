@@ -23,6 +23,12 @@ npm run dev
 
 Open the Vite URL shown in the terminal. The game is intentionally usable without provider credentials. To enable email auth and live Realtime chat, copy `.env.example` to `.env.local` and add a Supabase project URL and publishable/anon key.
 
+For the hosted source of truth, see the [LOW WATER GitHub repository](https://github.com/jordan-thirkle/low-water). The checked-in Vercel configuration is intentionally small: Vercel runs `npm ci`, builds `dist`, and serves the Vite history fallback with immutable caching for shipped assets.
+
+## Mobile controls
+
+The playfield supports touch-drag movement. Tap the action buttons in the HUD to bank, push the tide, extract, or restart. Keyboard controls remain available on desktop: `W/A/S/D` or arrow keys to move, `E` to bank, `Q` to push tide, and `X` to extract.
+
 ## Build and verify
 
 ```bash
@@ -30,7 +36,7 @@ npm run build
 npm run test
 ```
 
-The project is not release-ready yet. It is a playable proof of the loop. The production gates are listed in [`docs/ROADMAP.md`](docs/ROADMAP.md), and the asset/license evidence is in [`docs/ASSET_MANIFEST.md`](docs/ASSET_MANIFEST.md).
+The project is currently a playable proof of the loop with a configured public GitHub repository and Vercel project. A verified source-backed preview is still a release gate: the authoritative multiplayer, moderation, persistence, and human playtest work remain in [`docs/ROADMAP.md`](docs/ROADMAP.md). Asset/license evidence is in [`docs/ASSET_MANIFEST.md`](docs/ASSET_MANIFEST.md), and release operations are in [`docs/RELEASE.md`](docs/RELEASE.md).
 
 ## Product rules
 

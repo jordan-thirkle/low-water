@@ -1,7 +1,12 @@
-import Phaser from "phaser";
+import type PhaserModule from "phaser";
 import type { RunSnapshot } from "../app/types";
 import type { RemotePlayer } from "../lib/multiplayer";
 import { LowWaterSimulation } from "./simulation";
+
+// Phaser is loaded before the module from the pinned script in index.html. Keeping
+// the npm package as a type/build dependency preserves local editor and CI checks
+// without shipping a second copy of the runtime in the application chunk.
+declare const Phaser: typeof PhaserModule;
 
 export interface LowWaterGameController {
   bank: () => void;
@@ -24,6 +29,15 @@ const COLORS = {
   rust: 0xa24e32,
   slate: 0x3c4a4d,
 };
+
+type LowWaterAssetConfig = typeof globalThis & {
+  __LOW_WATER_ASSET_BASE__?: string;
+  __LOW_WATER_ASSET_EXTENSION__?: ".png" | ".webp";
+};
+
+const lowWaterGlobal = globalThis as LowWaterAssetConfig;
+const assetBase = lowWaterGlobal.__LOW_WATER_ASSET_BASE__ ?? "/assets/generated";
+const assetExtension = lowWaterGlobal.__LOW_WATER_ASSET_EXTENSION__ ?? ".png";
 
 class LowWaterScene extends Phaser.Scene {
   private readonly onSnapshot: (snapshot: RunSnapshot) => void;
@@ -52,10 +66,10 @@ class LowWaterScene extends Phaser.Scene {
   }
 
   preload(): void {
-    this.load.image("arena", "/assets/generated/low-water-yard.jpg");
-    this.load.image("player", "/assets/generated/low-water-player.png");
-    this.load.image("crow", "/assets/generated/low-water-crow.png");
-    this.load.image("key", "/assets/generated/low-water-key.png");
+    this.load.image("arena", `${assetBase}/low-water-yard.jpg`);
+    this.load.image("player", `${assetBase}/low-water-player${assetExtension}`);
+    this.load.image("crow", `${assetBase}/low-water-crow${assetExtension}`);
+    this.load.image("key", `${assetBase}/low-water-key${assetExtension}`);
   }
 
   create(): void {
